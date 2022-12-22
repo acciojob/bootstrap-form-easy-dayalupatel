@@ -9,26 +9,34 @@
 
 <body>
 	<!-- START -->
-	<form class="border border-primary rounded needs-validation">
+	<form class="border border-primary rounded needs-validation" novalidate>
 		<h1 class="text-center">Internship Form</h1>
-		<div class="row">
+		<div class="row my-4">
 			<div class="col">
 				<div class="form-group">
-					<label for="first-name-input">First Name</label>
-					<input type="text" class="form-control" id="first-name-input" placeholder="First Name">
+					<label for="first-name-input" class="form-label">First Name</label>
+					<input type="text" class="form-control" id="first-name-input" placeholder="First Name" required>
+					<div class="invalid-feedback">
+						Please provide First Name.
+					</div>
 				</div>
 			</div>
 			<div class="col">
 				<div class="form-group">
-					<label for="last-name-input">Last Name</label>
-					<input type="text" class="form-control" id="last-name-input" placeholder="Last Name">
+					<label for="last-name-input" class="form-label">Last Name</label>
+					<input type="text" class="form-control" id="last-name-input" placeholder="Last Name" required>
+					<div class="invalid-feedback">
+						Please provide Last Name.
+					</div>
 				</div>
 			</div>
 			<div class="col">
 				<div class="form-group">
-					<label for="email-input">Email Address</label>
-					<input type="email" class="form-control" id="email-input" aria-describedby="emailHelp" placeholder="Enter Your Email">
-					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					<label for="email-input" class="form-label">Email Address</label>
+					<input type="email" class="form-control" id="email-input" aria-describedby="emailHelp" placeholder="Enter Your Email" required>
+					<div class="invalid-feedback">
+						Please provide valid email.
+					</div>
 				  </div>
 			</div>
 		</div>
@@ -36,14 +44,17 @@
 		<div class="row">
 			<div class="col">
 				<div class="form-group">
-					<label for="college-input">College</label>
-					<input type="text" class="form-control" id="college-input" placeholder="Your College">
+					<label for="college-input" class="form-label">College</label>
+					<input type="text" class="form-control" id="college-input" placeholder="Your College" required>
+					<div class="invalid-feedback">
+						Please provide a valid College.
+					</div>
 				</div>
 			</div>
 			<div class="col">
 				<div class="form-group">
-					<label for="college-input">Graduation Year</label>
-					<select class="form-select" required>
+					<label for="college-input" class="form-label">Graduation Year</label>
+					<select class="form-select" id="graduation-input" required>
 					  <option value="">Choose...</option>
 					  <option value="2020">2020</option>
 					  <option value="2021">2021</option>
@@ -51,21 +62,51 @@
 					  <option value="2023">2023</option>
 					</select>
 				  </div>
+				  <div class="invalid-feedback">
+					Please provide Graduation year.
+				</div>
 			</div>
 			<div class="col">
 				<div class="form-group">
-					<label for="roll-no-input">Roll No</label>
-					<input type="number" class="form-control" id="roll-no-input" placeholder="Roll no">
+					<label for="roll-no-input" class="form-label">Roll No.</label>
+					<input type="text" class="form-control" id="roll-no-input" placeholder="Roll no" required>
+				</div>
+				<div class="invalid-feedback">
+					Please provide valid roll no.
 				</div>
 			</div>
 		</div>
 		
 		<div class="form-group form-check my-4">
-		  <input type="checkbox" class="form-check-input" id="conditions-checkbox">
-		  <label class="form-check-label" for="conditions-checkbox">Agree to terms and conditions</label>
+		  <input type="checkbox" class="form-check-input" id="conditions-checkbox" required>
+		  <label class="form-check-label" for="conditions-checkbox" class="form-label">Agree to terms and conditions</label>
+		  <div class="invalid-feedback">
+			You must accept term and conditions!!
+			</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
+	  
+	  <script>
+	  // Example starter JavaScript for disabling form submissions if there are invalid fields
+	  (function() {
+		'use strict';
+		window.addEventListener('load', function() {
+		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		  var forms = document.getElementsByClassName('needs-validation');
+		  // Loop over them and prevent submission
+		  var validation = Array.prototype.filter.call(forms, function(form) {
+			form.addEventListener('submit', function(event) {
+			  if (form.checkValidity() === false) {
+				event.preventDefault();
+				event.stopPropagation();
+			  }
+			  form.classList.add('was-validated');
+			}, false);
+		  });
+		}, false);
+	  })();
+	  </script>
 	<!-- END -->
     <script type="text/javascript" src="./script.js">
 </script>
